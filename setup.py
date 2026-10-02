@@ -20,5 +20,6 @@ setup(
     author='weasleyxin',
     author_email='jerry122409@gmail.com',
     packages=find_packages(),
+    python_requires='>=3.8',
     install_requires=get_requirements('requirements.txt')
 )
