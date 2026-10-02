@@ -11,7 +11,6 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 from src.exception import CustomException
 from src.logger import logging
-import os
 
 from src.utils import save_object
 
@@ -30,19 +29,15 @@ class DataTransformation:
     def get_data_transformer_object(self):
         try:
             numerical_columns = [
-                "study_hours_per_day",
-                "attendance_percentage",
-                "assignment_score",
-                "midterm_score",
-                "final_exam_score",
-                "participation_score",
-                "sleep_hours",
+                "reading score",
+                "writing score",
             ]
             categorical_columns = [
                 "gender",
-                "internet_access",
-                "extra_classes",
-                "parent_education",
+                "race/ethnicity",
+                "parental level of education",
+                "lunch",
+                "test preparation course",
             ]
 
             num_pipeline = Pipeline(
@@ -85,7 +80,7 @@ class DataTransformation:
             logging.info("Obtaining preprocessing object")
             preprocessing_obj = self.get_data_transformer_object()
 
-            target_column_name = "overall_score"
+            target_column_name = "math score"
             input_feature_train_df = train_df.drop(
                 columns=[target_column_name])
             target_feature_train_df = train_df[target_column_name]
